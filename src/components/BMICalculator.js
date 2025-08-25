@@ -7,30 +7,23 @@ export default function BMICalculator() {
   const [bmi, setBmi] = useState(null);
 
   const calculateBMI = () => {
-    if (weight && height) {
-      const h = height / 100;
-      const result = (weight / (h * h)).toFixed(2);
-      setBmi(result);
-    }
+    if (!weight || !height) return;
+    const h = parseFloat(height) / 100; // cm → m
+    const result = parseFloat(weight) / (h * h);
+    setBmi(result.toFixed(2));
   };
 
   return (
-    <div>
+    <section>
       <h2>BMI 계산기</h2>
-      <input
-        type="number"
-        placeholder="체중 (kg)"
-        value={weight}
-        onChange={(e) => setWeight(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="신장 (cm)"
-        value={height}
-        onChange={(e) => setHeight(e.target.value)}
-      />
-      <button onClick={calculateBMI}>계산</button>
-      {bmi && <p>당신의 BMI: {bmi}</p>}
-    </div>
+      <div>
+        <label>체중 (kg)</label>
+        <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} />
+        <label>신장 (cm)</label>
+        <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} />
+        <button onClick={calculateBMI}>계산</button>
+      </div>
+      {bmi && <p>BMI: {bmi}</p>}
+    </section>
   );
 }

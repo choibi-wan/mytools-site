@@ -4,7 +4,7 @@ import CurrencyConverter from "../components/CurrencyConverter";
 
 export default function Home() {
   return (
-    <main style={{ padding: "20px" }}>
+    <main>
       <h1>My Tools</h1>
       <UnitConverter />
       <BMICalculator />

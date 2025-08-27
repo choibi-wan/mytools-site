@@ -16,27 +16,34 @@ export default function UnitConverter() {
   };
 
   return (
-    <section>
-      <h2>단위 변환기 (cm ↔ inch)</h2>
-      <div>
-        <label>cm</label>
-        <input
-          type="number"
-          value={cm}
-          onChange={(e) => {
-            setCm(e.target.value);
-            setInch(convertToInch(e.target.value));
-          }}
-        />
-        <label>inch</label>
-        <input
-          type="number"
-          value={inch}
-          onChange={(e) => {
-            setInch(e.target.value);
-            setCm(convertToCm(e.target.value));
-          }}
-        />
+    <section className="p-6 bg-white rounded-xl shadow-md my-4">
+      <h2 className="text-xl font-bold mb-4">단위 변환기 (cm ↔ inch)</h2>
+      <div className="flex items-center gap-4">
+        <div className="flex flex-col">
+          <label className="text-sm mb-1">cm</label>
+          <input
+            type="number"
+            className="border rounded p-2 w-32"
+            value={cm}
+            onChange={(e) => {
+              setCm(e.target.value);
+              setInch(convertToInch(e.target.value));
+            }}
+          />
+        </div>
+        <span className="text-gray-600">↔</span>
+        <div className="flex flex-col">
+          <label className="text-sm mb-1">inch</label>
+          <input
+            type="number"
+            className="border rounded p-2 w-32"
+            value={inch}
+            onChange={(e) => {
+              setInch(e.target.value);
+              setCm(convertToCm(e.target.value));
+            }}
+          />
+        </div>
       </div>
     </section>
   );
